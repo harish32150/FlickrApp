@@ -10,19 +10,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class FlickrImagesDataSource(private val flickrService: FlickrService, private val query: String) :
   RxPagingSource<Int, FlickrImage>() {
   override fun getRefreshKey(state: PagingState<Int, FlickrImage>): Int? {
-//    when {
-//      state.anchorPosition == null -> null
-//      state.closestPageToPosition(state.anchorPosition!!) == null -> null
-//
-//    }
-//    state.anchorPosition.let { _anchorPos ->
-//      if(_anchorPos == null) return null
-//      state.closestItemToPosition(_anchorPos).let { _anchorPage ->
-//        if(_anchorPage == null) return null
-//        _anchorPage.
-//      }
-//    }
-    TODO("not implemented")
+    return null
   }
 
   override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, FlickrImage>> {

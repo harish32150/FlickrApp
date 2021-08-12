@@ -19,7 +19,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     binding.rv.apply {
       layoutManager = LinearLayoutManager(this@HomeActivity)
-      adapter = imageAdapter
+      adapter = imageAdapter.withLoadStateFooter(FlickrImagesFooterStateAdapter {
+        imageAdapter.retry()
+      })
     }
 
     viewModel.images.observe(this, Observer {
