@@ -1,6 +1,7 @@
 package com.harish.itest
 
 import android.app.Application
+import com.harish.itest.di.activityModule
 import com.harish.itest.di.networkModule
 import com.harish.itest.di.repositoryModule
 import com.harish.itest.di.viewModelModule
@@ -18,7 +19,8 @@ class FlickrApp : Application() {
       modules(
         networkModule,
         repositoryModule,
-        viewModelModule
+        viewModelModule,
+        activityModule
       )
     }
   }

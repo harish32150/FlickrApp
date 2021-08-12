@@ -1,11 +1,9 @@
 package com.harish.itest.di
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.harish.itest.BuildConfig
 import com.harish.itest.network.FlickrService
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -25,10 +23,7 @@ val networkModule = module {
     RxJava3CallAdapterFactory.create()
   }
   factory {
-    providesCache(get())
-  }
-  factory {
-    providesOkhttp(get())
+    providesOkhttp()
   }
   single {
     providesRetrofit(get(), get(), get())
@@ -38,14 +33,8 @@ val networkModule = module {
   }
 }
 
-private fun providesCache(context: Context): Cache {
-  val cacheSize = 10 * 1024 * 1024 // 10 MB
-  return Cache(context.cacheDir, cacheSize.toLong())
-}
-
-private fun providesOkhttp(cache: Cache): OkHttpClient {
+private fun providesOkhttp(): OkHttpClient {
   val client = OkHttpClient.Builder()
-    .cache(cache)
     .connectTimeout(10, TimeUnit.SECONDS)
     .writeTimeout(30, TimeUnit.SECONDS)
     .readTimeout(10, TimeUnit.SECONDS)

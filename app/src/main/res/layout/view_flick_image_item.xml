@@ -18,36 +18,63 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="@color/primary_700"
+    app:cardBackgroundColor="@color/primary_500"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:paddingBottom="8dp">
+      android:orientation="vertical">
 
       <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_preview"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="@color/white"
+        android:layout_height="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_image_24"
         bind:i_url="@{ image.imageUrl() }" />
 
+      <View
+        android:id="@+id/view_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overlay_flickr_img"
+        app:layout_constraintBottom_toBottomOf="@id/img_preview"
+        app:layout_constraintEnd_toEndOf="@id/img_preview"
+        app:layout_constraintStart_toStartOf="@id/img_preview"
+        app:layout_constraintTop_toTopOf="parent" />
+
       <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@{ image.ownerName }"
         android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/img_preview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_preview"
-        tools:text="Harish Kumar Sharma" />
+        tools:text="harish" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@{ image.title }"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/text_owner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Mini Advert 1963" />
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.cardview.widget.CardView>
 </layout>

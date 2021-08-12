@@ -13,6 +13,9 @@ class HomeViewModel(private val flickrRepository: FlickrRepository) : BaseViewMo
 
   val images = MutableLiveData<PagingData<FlickrImage>>()
 
+  /**
+   * Search images
+   */
   fun searchImages(query: String) {
     flickrRepository.searchImages(query)
       .cachedIn(viewModelScope)

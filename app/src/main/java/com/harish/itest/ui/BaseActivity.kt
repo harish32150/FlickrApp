@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.harish.itest.BR
+import com.harish.itest.utils.UIUtils
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.core.parameter.parametersOf
 import kotlin.reflect.KClass
 
 abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -15,6 +18,9 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
   /** view model */
   protected open val viewModel: VM by lazy { getViewModel(clazz = viewModelClass()) }
+
+  /* UI Utils */
+  val uiUtils: UIUtils by inject { parametersOf(this) }
 
   /** provide binding layout resource id */
   @LayoutRes
