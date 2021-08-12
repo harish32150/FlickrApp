@@ -10,9 +10,9 @@ data class FlickrImage(
   @SerializedName("farm") val farm: Int,
   @SerializedName("title") val title: String,
   @SerializedName("ownername") val ownerName: String,
-  @SerializedName("url_m") val urlMedium: String,
+  @SerializedName("url_m") val urlMedium: String?,
   @SerializedName("height_m") val height: Int,
   @SerializedName("width_m") val width: Int
 ) {
-
+  fun imageUrl() = "https://farm$farm.staticflickr.com/$server/${id}_${secret}_m.jpg"
 }
